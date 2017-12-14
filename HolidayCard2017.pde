@@ -1,48 +1,31 @@
-
-Snow [] s;
-PImage img;
-void setup() {
-  size(800, 400);
-  s=new Snow[100];
-  img = loadImage("java.png");
-  for (int i=0; i<s.length; i++) {
-    s[i]= new Snow();
-  }
+float g1 = 68;
+float g2 = 48;
+float g3 = 51;
+Tree tr;
+BlizzardSnow snow = new BlizzardSnow();
+int numFlakes;
+void setup(){
+  size(1024,660);
+  tr = new Tree();
+  snow.generate();
+  textSize(48);
 }
 
-void draw() {
-  background(0);
-  image(img, 0, 0);
-  for (int i=0; i<s.length; i++) {
-    s[i].addPhysics();
-    s[i].snow();
+void draw(){
+  if(keyPressed){
+    delay(250);
+    snow.egg();
   }
-}
-
-
-class Snow {
-  float acceleration;
-  //float velocity=.2;
-  float velocity=(float)Math.random();
-  float xlocation;
-  float ylocation;
-  float xloc=(float)Math.random();
-  float yloc;
-  float s=(float)Math.random()*20;
-  float [] f;
-  Snow() {
-    //xlocation=(float)Math.random()*width;
-    xlocation=random(-4, width);
-    ylocation=0;
-  }
-  void addPhysics() {
-    yloc=acceleration+velocity;
-  }
-  void snow() {
-    fill(255, 255, 255);
-    ellipse(xlocation+=xloc, ylocation+=yloc, s, s);
-    if (ylocation>height) {
-      ylocation=0;
-    }
-  }
+  background(14,35,97);
+  fill(g1,g2,g3);
+  rectMode(CORNER);
+  rect(-1,560,1025,100);
+  fill(225,32,12);
+  text("Stay warm this holiday season.",70,100);
+  tr.drawTree(300,312,525);
+  snow.draw();
+  g1+=.125;
+  g2+=.125;
+  g3+=.125;
+  
 }

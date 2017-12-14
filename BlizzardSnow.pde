@@ -1,6 +1,4 @@
 boolean eggMode = false;
-PImage flake;
-PImage present;
 float[] amps;
 float[] xVals;
 float[] yVals;
@@ -10,8 +8,6 @@ int flakes = 250;
 int maxSpeed = 25;
 class BlizzardSnow{
   public void generate(){
-    present = loadImage("present.png");
-    flake = loadImage("flake.png");
     amps = new float[flakes];
     xVals = new float[flakes];
     yVals = new float[flakes];
@@ -30,9 +26,9 @@ class BlizzardSnow{
     fill(255);
     for(int i =0; i < xVals.length;i++){
     if(eggMode){
-      image(present,xVals[i],yVals[i],25,25);
+      ellipse(xVals[i],yVals[i],25,25);
     }else{
-      image(flake,xVals[i],yVals[i],15,15);
+      ellipse(xVals[i],yVals[i],15,15);
     }
     yVals[i]=yVals[i]+(amps[i]*cos(angles[i]));
     if(angles[i]<=6.27){

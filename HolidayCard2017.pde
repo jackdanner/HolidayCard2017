@@ -1,3 +1,4 @@
+Sun sn;
 float g1 = 68;
 float g2 = 48;
 float g3 = 51;
@@ -7,6 +8,7 @@ int numFlakes;
 void setup(){
   size(1024,660);
   tr = new Tree();
+  sn = new Sun();
   snow.generate();
   textSize(48);
 }
@@ -17,6 +19,7 @@ void draw(){
     snow.egg();
   }
   background(14,35,97);
+  sn.drawSun();
   fill(g1,g2,g3);
   rectMode(CORNER);
   rect(-1,560,1025,100);
